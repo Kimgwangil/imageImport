@@ -1,0 +1,43 @@
+{% load static %}
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>img_test</title>
+  </head>
+  <body>
+    {% for img in imgs %}
+      <div>
+        <h2>
+          {{ img.prdt_cd }}
+          -
+          {{ img.item_nm }}
+        </h2>
+      <div>
+        <h3> - 추천 상품 </h3>
+        <div>
+            {% for img_lst in img.recmd %}
+              {% if img_lst.id == "추천" %}
+                <span style="display:table-cell; width: 150px;vertical-align:middle; text-align:center; border:0.5px solid">
+                  <img src= "{{ img_lst.img_url }}" alt = "" width = "150"/>
+                  {{ img_lst.recmd_prdt }}
+                </span>
+              {% endif %}
+            {% endfor %}
+          </div>
+        <h3> - 유사 상품</h3>
+        <div>
+            {% for img_lst in img.recmd %}
+              {% if img_lst.id == "유사" %}
+              <span style="display:table-cell; width: 150px;vertical-align:middle; text-align:center; border:0.5px solid">
+                  <img src= "{{ img_lst.img_url }}" alt = "" width = "150"/>
+                  {{ img_lst.recmd_prdt }}
+                </span>
+              {% endif %}
+            {% endfor %}
+        </div>
+      </div>
+      </div>
+      <br/> <br/>
+    {% endfor %}
+  </body>
+</html>

@@ -1,0 +1,35 @@
+{% load static %}
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>img_test</title>
+  </head>
+  <body>
+    <div>
+      <h4>
+        * 복붙해서 검색하면 됩니다! *
+      </h4>
+      {% for img in imgs %}
+        {{ img.dsgn_grp_no }}
+      {% endfor %}
+    </div>
+    <br/><br/>
+    {% for img in imgs %}
+      <div>
+      <h2>{{ img.dsgn_grp_no }}
+      -
+      {{ img.item_nm }}
+      <h3>
+        이미지 갯수 : {{ img.img_url|length }}
+      </h3>
+      </h2>
+      </div>
+        <a>
+          {% for i in img.img_url %}
+            <img src= "{{ i }}" alt = "" width = "200" />
+          {% endfor %}
+        </a>
+      <br/> <br/>
+    {% endfor %}
+  </body>
+</html>
